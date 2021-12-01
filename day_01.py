@@ -1,13 +1,10 @@
 import aoc_helper
+from aoc_helper import chunk, chunk_default, extract_ints, iter, range
 
 raw = aoc_helper.fetch(1, 2021)
 
 
-def parse_raw():
-    ...
-
-
-data = aoc_helper.extract_ints(raw)
+data = extract_ints(raw)
 
 
 def part_one():
