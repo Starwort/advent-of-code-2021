@@ -74,8 +74,7 @@ def autocomplete(line):
 
 
 def part_two():
-    new_data = data.filtered(lambda i: parse_corrupt(i) == "")
-    return new_data.mapped(autocomplete).median()
+    return data.filtered(lambda i: parse_corrupt(i) == "").mapped(autocomplete).median()
 
 
 aoc_helper.lazy_submit(day=10, year=2021, solution=part_one)
