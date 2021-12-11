@@ -58,7 +58,7 @@ def part_one():
 def part_two():
     levels = deepcopy(data)
     for i in count(1):
-        if step(levels) == 100:
+        if step(levels) == data.len() * data[0].len():
             return i
 
 
