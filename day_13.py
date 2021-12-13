@@ -1,5 +1,15 @@
 import aoc_helper
-from aoc_helper import extract_ints, frange, irange, iter, list, map, range, tail_call
+from aoc_helper import (
+    decode_text,
+    extract_ints,
+    frange,
+    irange,
+    iter,
+    list,
+    map,
+    range,
+    tail_call,
+)
 
 raw = aoc_helper.fetch(13, 2021)
 # raw = """6,10
@@ -69,10 +79,8 @@ def part_two():
         my_points = fold(my_points, instruction)
     max_x = max(point[0] for point in my_points)
     max_y = max(point[1] for point in my_points)
-    for y in irange(0, max_y):
-        for x in irange(0, max_x):
-            print("#" if (x, y) in my_points else " ", end="")
-        print()
+    dots = [[(x, y) in my_points for x in irange(0, max_x)] for y in irange(0, max_y)]
+    return decode_text(dots)
 
 
 aoc_helper.lazy_submit(day=13, year=2021, solution=part_one)
