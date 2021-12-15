@@ -2,7 +2,7 @@ from collections import defaultdict
 from heapq import heappop, heappush, heappushpop
 
 import aoc_helper
-from aoc_helper import djikstras, list, map, range
+from aoc_helper import dijkstras, list, map, range
 
 raw = aoc_helper.fetch(15, 2021)
 
@@ -15,7 +15,7 @@ data = parse_raw()
 
 
 def part_one():
-    return djikstras(data)
+    return dijkstras(data)
 
 
 def part_two():
@@ -34,7 +34,7 @@ def part_two():
         + new_data.mapped(lambda row: row.mapped(lambda x: (x + 2) % 9 + 1))
         + new_data.mapped(lambda row: row.mapped(lambda x: (x + 3) % 9 + 1))
     )
-    return djikstras(new_data)
+    return dijkstras(new_data)
 
 
 aoc_helper.lazy_submit(day=15, year=2021, solution=part_one)
