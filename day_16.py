@@ -25,15 +25,6 @@ hex_to_bin = {
 }
 
 
-def log(func):
-    def wrapped(*args):
-        res = func(*args)
-        print(res)
-        return res
-
-    return wrapped
-
-
 def parse_packet(bits):
     version = int(bits[:3], 2)
     type = int(bits[3:6], 2)
@@ -73,11 +64,8 @@ def parse_packet(bits):
 
 
 def parse_raw():
-    packets = []
-    for line in raw.splitlines():
-        bits = "".join(hex_to_bin[ch] for ch in line)
-        packets.append(parse_packet(bits)[1])
-    return packets
+    bits = "".join(hex_to_bin[ch] for ch in raw)
+    return parse_packet(bits)
 
 
 data = parse_raw()
@@ -85,7 +73,7 @@ data = parse_raw()
 
 def part_one():
     total = 0
-    to_search = data.copy()
+    to_search = [data]
     while to_search:
         packet = to_search.pop()
         total += packet[0]
@@ -116,7 +104,7 @@ def handle_packet(packet):
 
 
 def part_two():
-    return handle_packet(data[0])
+    return handle_packet(data)
 
 
 aoc_helper.lazy_submit(day=16, year=2021, solution=part_one)
