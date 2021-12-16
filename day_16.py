@@ -65,7 +65,7 @@ def parse_packet(bits):
 
 def parse_raw():
     bits = "".join(hex_to_bin[ch] for ch in raw)
-    return parse_packet(bits)
+    return parse_packet(bits)[1]
 
 
 data = parse_raw()
