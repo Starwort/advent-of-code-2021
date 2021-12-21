@@ -29,14 +29,14 @@ def die_roll(rolls):
     return (rolls % 100) + 1
 
 
-def part_one():
+def part_one(target=1000):
     pos_a = a
     pos_b = b
     score_a = 0
     score_b = 0
     rolls = 0
     turn = 0
-    while score_a < 1000 and score_b < 1000:
+    while score_a < target and score_b < target:
         roll = die_roll(rolls) + die_roll(rolls + 1) + die_roll(rolls + 2)
         rolls += 3
         if turn == 0:
@@ -56,7 +56,7 @@ def part_one():
         return score_b * rolls
 
 
-def part_two():
+def part_two(target=21):
     states = {}
     states[a, b, 0, 0, 0] = 1
     wins = [0, 0]
@@ -64,8 +64,8 @@ def part_two():
         old_states = states
         states = defaultdict(int)
         for (pos_a, pos_b, score_a, score_b, turn), count in old_states.items():
-            if score_a >= 21 or score_b >= 21:
-                wins[score_b >= 21] += count
+            if score_a >= target or score_b >= target:
+                wins[score_b >= target] += count
                 continue
             for i in irange(1, 3):
                 for j in irange(1, 3):
